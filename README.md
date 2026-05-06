@@ -1,5 +1,20 @@
 # W4111 Web Application Project
 
+## Note for the marker:
+1. The PDF of the test notebook is in the ./tests folder, the PDF file name is "classic_model_test_notebook.pdf". The notebook is in the same folder, called "classic_model_test_notebook.ipynb".
+
+2. If you want to run notebook, it is fine. But you have to set `.env` file proporly. You have to involve following setting in the environment file. (I hide the password as it is my secrets...)
+```
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD= SECRETS :)
+DB_SCHEMA=classicmodels
+```
+3. That's all! Thank you for marking me. :)
+
+## Original project specification:
+
 This repository is the **starter template** for the course web application assignment. You will fork or clone it and implement a complete, production-style data-backed service on top of the skeleton provided here.
 
 ## Project goal
