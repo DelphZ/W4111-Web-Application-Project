@@ -73,11 +73,11 @@ class MySQLDataService(AbstractBaseDataService):
                 with conn.cursor() as cursor:
                     cursor.execute(sql, tuple(payload.values()))
                     
-                    # 1. Auto-Increment ID (e.g., Customers/Orders)
+                    # 1. auto-increment ID (e.g., Customers/Orders)
                     if cursor.lastrowid:
                         return str(cursor.lastrowid)
                     
-                    # 2. Composite/Manual Key (e.g., OrderDetails)
+                    # 2. Composite Key (e.g., OrderDetails)
                     # If no auto-id, return the key from the payload itself
                     key_parts = [str(payload.get(k)) for k in self.pk_columns]
                     return "|".join(key_parts)
@@ -86,8 +86,6 @@ class MySQLDataService(AbstractBaseDataService):
 
     
     def updateByPrimaryKey(self, primary_key: str, payload: dict) -> int:
-        # 1. Safety: Remove Primary Keys from payload
-        # (Prevents "IntegrityError: Cannot update Foreign Key" crashes)
         safe_payload = payload.copy()
         for pk in self.pk_columns:
             if pk in safe_payload:
